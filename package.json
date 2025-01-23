@@ -13,10 +13,19 @@
     "scripts": {
         "translate": "node src/translate-content.mjs",
         "build": "rimraf dist && rollup -c",
-        "prepare": "npm run build",
+        "prepare": "husky install && npm run build",
         "pretest": "npm run build",
         "test": "node --test test/*.test.js",
-        "test:watch": "node --test --watch test/*.test.js"
+        "test:watch": "node --test --watch test/*.test.js",
+        "version:patch": "npm version patch -m \"chore(release): bump version to %s\"",
+        "version:minor": "npm version minor -m \"chore(release): bump version to %s\"",
+        "version:major": "npm version major -m \"chore(release): bump version to %s\"",
+        "commit": "git-cz"
+    },
+    "config": {
+        "commitizen": {
+            "path": "@commitlint/cz-commitlint"
+        }
     },
     "keywords": [
         "contentful",
@@ -36,10 +45,15 @@
         "inquirer": "^9.2.12"
     },
     "devDependencies": {
+        "@commitlint/cli": "^18.4.3",
+        "@commitlint/config-conventional": "^18.4.3",
+        "@commitlint/cz-commitlint": "^18.4.3",
         "@rollup/plugin-commonjs": "^25.0.0",
         "@rollup/plugin-json": "^6.0.0",
         "@rollup/plugin-node-resolve": "^15.0.0",
         "@rollup/plugin-terser": "^0.4.4",
+        "commitizen": "^4.3.0",
+        "husky": "^8.0.3",
         "rimraf": "^5.0.5",
         "rollup": "^4.0.0"
     },
