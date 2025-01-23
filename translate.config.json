@@ -1,0 +1,36 @@
+{
+    "maxDepth": 5,
+    "maxFields": 200,
+    "startingContentType": "recipe",
+    "logging": {
+        "saveFailedTranslations": false,
+        "failedTranslationsPath": "logs/failed-translations"
+    },
+    "skipFields": [
+        "slug",
+        "videoUrl",
+        "linkTo",
+        "pageType",
+        "publicationLink",
+        "referenceId",
+        "difficulty",
+        "fat",
+        "pHValue",
+        "pHRange",
+        "powderType",
+        "productType",
+        "name",
+        "type",
+        "colour",
+        "instagramAccountName",
+        "id",
+        "url",
+        "region"
+    ],
+    "supportedLocales": ["de", "id"],
+    "urlPatterns": {
+        "absoluteUrl": "^https?:\\/\\/[^\\s]+$",
+        "relativePath": "^\\/[\\w-/]+$",
+        "anchorLink": "^#[\\w-]+$"
+    }
+}
