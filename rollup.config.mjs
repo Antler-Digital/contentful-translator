@@ -1,6 +1,19 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
+import fs from 'fs';
+import path from 'path';
+
+// Plugin to set executable permissions
+const executableBinary = () => ({
+  name: 'executable-binary',
+  writeBundle(options) {
+    if (options.dir?.includes('bin')) {
+      const binPath = path.join(options.dir, 'translate.mjs');
+      fs.chmodSync(binPath, '755');
+    }
+  }
+});
 
 export default [
   // Main translation script
@@ -11,7 +24,8 @@ export default [
       format: 'es',
       sourcemap: true,
       preserveModules: true,
-      preserveModulesRoot: 'src'
+      preserveModulesRoot: 'src',
+      entryFileNames: '[name].mjs'
     },
     external: [
       'chalk',
@@ -36,6 +50,7 @@ export default [
       dir: 'dist/bin',
       format: 'es',
       sourcemap: true,
+      entryFileNames: 'translate.mjs',
       banner: '#!/usr/bin/env node'
     },
     external: [
@@ -47,7 +62,8 @@ export default [
     plugins: [
       nodeResolve(),
       commonjs(),
-      json()
+      json(),
+      executableBinary()
     ]
   }
 ]; 

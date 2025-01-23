@@ -14,8 +14,9 @@
         "translate": "node src/translate-content.mjs",
         "build": "rimraf dist && rollup -c",
         "prepare": "npm run build",
-        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-        "test:watch": "node --test --watch"
+        "pretest": "npm run build",
+        "test": "node --test test/*.test.js",
+        "test:watch": "node --test --watch test/*.test.js"
     },
     "keywords": [
         "contentful",
@@ -39,7 +40,6 @@
         "@rollup/plugin-json": "^6.0.0",
         "@rollup/plugin-node-resolve": "^15.0.0",
         "@rollup/plugin-terser": "^0.4.4",
-        "jest": "^29.7.0",
         "rimraf": "^5.0.5",
         "rollup": "^4.0.0"
     },

@@ -29,6 +29,9 @@ jobs:
             - name: Build package
               run: yarn build
 
+            - name: Set binary permissions
+              run: chmod +x dist/bin/translate.mjs
+
             - name: Run tests
               run: yarn test
 
@@ -65,6 +68,9 @@ jobs:
 
             - name: Build
               run: yarn build
+
+            - name: Set binary permissions
+              run: chmod +x dist/bin/translate.mjs
 
             - name: Publish to NPM
               if: success()
