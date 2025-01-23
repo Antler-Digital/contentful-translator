@@ -5,15 +5,16 @@
     "main": "dist/translate-content.mjs",
     "type": "module",
     "bin": {
-        "contentful-translate": "dist/bin/translate.mjs"
+        "contentful-translator": "dist/bin/translate.js"
     },
     "files": [
-        "dist"
+        "dist",
+        "dist/bin"
     ],
     "scripts": {
         "translate": "node src/translate-content.mjs",
         "build": "rimraf dist && rollup -c",
-        "prepare": "husky install && npm run build",
+        "prepare": "husky install && npm run build && chmod +x dist/bin/translate.js",
         "pretest": "npm run build",
         "test": "node --test test/*.test.js",
         "test:watch": "node --test --watch test/*.test.js",

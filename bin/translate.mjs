@@ -35,7 +35,7 @@ if (!fs.existsSync(userConfigPath)) {
 }
 
 // Import and run the main script
-import('../src/translate-content.mjs').catch(error => {
+import('contentful-translator/dist/translate-content.js').catch(error => {
   console.error(chalk.red('Error running translator:'), error);
   process.exit(1);
 }); 

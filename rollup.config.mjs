@@ -8,9 +8,8 @@ import path from 'path';
 const executableBinary = () => ({
   name: 'executable-binary',
   writeBundle(options) {
-    if (options.dir?.includes('bin')) {
-      const binPath = path.join(options.dir, 'translate.mjs');
-      fs.chmodSync(binPath, '755');
+    if (options.file && options.file.includes('bin')) {
+      fs.chmodSync(options.file, '755');
     }
   }
 });
@@ -20,12 +19,9 @@ export default [
   {
     input: 'src/translate-content.mjs',
     output: {
-      dir: 'dist',
+      file: 'dist/translate-content.js',
       format: 'es',
-      sourcemap: true,
-      preserveModules: true,
-      preserveModulesRoot: 'src',
-      entryFileNames: '[name].mjs'
+      sourcemap: true
     },
     external: [
       'chalk',
@@ -47,23 +43,28 @@ export default [
   {
     input: 'bin/translate.mjs',
     output: {
-      dir: 'dist/bin',
+      file: 'dist/bin/translate.js',
       format: 'es',
-      sourcemap: true,
-      entryFileNames: 'translate.mjs',
-      banner: '#!/usr/bin/env node'
+      sourcemap: true
     },
     external: [
       'chalk',
       'fs',
       'path',
-      'url'
+      'url',
+      'contentful-translator/dist/translate-content.js'
     ],
     plugins: [
       nodeResolve(),
       commonjs(),
       json(),
-      executableBinary()
+      executableBinary(),
+      {
+        name: 'shebang',
+        renderChunk(code) {
+          return '#!/usr/bin/env node\n' + code.replace('#!/usr/bin/env node\n', '');
+        }
+      }
     ]
   }
 ]; 

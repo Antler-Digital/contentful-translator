@@ -31,7 +31,7 @@ jobs:
               run: yarn build
 
             - name: Set binary permissions
-              run: chmod +x dist/bin/translate.mjs
+              run: chmod +x dist/bin/translate.js
 
             - name: Run tests
               run: yarn test
@@ -74,7 +74,7 @@ jobs:
               run: yarn build
 
             - name: Set binary permissions
-              run: chmod +x dist/bin/translate.mjs
+              run: chmod +x dist/bin/translate.js
 
             - name: Publish to NPM
               if: success()

@@ -165,6 +165,13 @@ logs/failed-translations/failed-translations-{locale}-{timestamp}.json
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+### Future Features
+
+-   Either a flag or setting to allow to publish straight away
+-   Setting to mute verbose logs
+-   Handle non-starting en locales
+-   Improve efficiency for multi language translations
+
 ## License
 
 MIT © [Antler Digital]

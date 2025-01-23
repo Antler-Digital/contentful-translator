@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { createClient } from 'contentful-management';
+import contentfulManagement from 'contentful-management';
 import * as deepl from 'deepl-node';
 import dotenv from 'dotenv';
 import fs from 'fs';
@@ -56,7 +56,7 @@ if (!SPACE_ID || !ACCESS_TOKEN || !DEEPL_API_KEY) {
 }
 
 const translator = new deepl.Translator(DEEPL_API_KEY);
-const client = createClient({
+const client = contentfulManagement.createClient({
   accessToken: ACCESS_TOKEN,
 });
 
@@ -232,10 +232,17 @@ async function applyUpdatesToContentful(entry, updates, processor, locale, envir
 }
 
 async function processPage(page, locale, environment, progress) {
-  console.log(chalk.blue(`\n=== Processing page: ${page.fields.title['en']} ===`));
+  // Get a display name for the entry
+  const displayName = page.fields.title?.['en'] ||
+    page.fields.name?.['en'] ||
+    page.fields.headline?.['en'] ||
+    Object.values(page.fields)[0]?.['en'] ||
+    page.sys.id;
+
+  console.log(chalk.blue(`\n=== Processing entry: ${displayName} ===`));
   console.log(chalk.gray(`Locale: ${locale}`));
   if (progress) {
-    console.log(chalk.blue(`Progress: Page ${progress.current} of ${progress.total}`));
+    console.log(chalk.blue(`Progress: Entry ${progress.current} of ${progress.total}`));
   }
 
   // Get translatable fields and field processor first
@@ -289,11 +296,20 @@ async function main() {
     console.log(chalk.blue(`\nFound ${entries.items.length} ${config.startingContentType} entries`));
 
     // Create page selection choices
-    const pageChoices = entries.items.map(entry => ({
-      name: entry.fields.title?.['en'] || entry.fields.name?.['en'] || entry.sys.id,
-      value: entry,
-      checked: false // Default unchecked
-    }));
+    const pageChoices = entries.items.map(entry => {
+      // Try different common field names for the title
+      const title = entry.fields.title?.['en'] ||
+        entry.fields.name?.['en'] ||
+        entry.fields.headline?.['en'] ||
+        Object.values(entry.fields)[0]?.['en'] ||  // Fallback to first field's English value
+        entry.sys.id;  // Final fallback to entry ID
+
+      return {
+        name: title,
+        value: entry,
+        checked: false
+      };
+    });
 
     const { selectedPages } = await inquirer.prompt([{
       type: 'checkbox',
