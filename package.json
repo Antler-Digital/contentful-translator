@@ -1,6 +1,6 @@
 {
     "name": "contentful-translator",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Automated content translation for locales for Contentful using DeepL.",
     "main": "dist/translate-content.mjs",
     "type": "module",
