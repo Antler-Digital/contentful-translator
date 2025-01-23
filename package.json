@@ -5,7 +5,7 @@
     "main": "dist/translate-content.mjs",
     "type": "module",
     "bin": {
-        "contentful-translate": "./dist/bin/translate.mjs"
+        "contentful-translate": "dist/bin/translate.mjs"
     },
     "files": [
         "dist"
@@ -45,5 +45,8 @@
     },
     "engines": {
         "node": ">=18"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }
