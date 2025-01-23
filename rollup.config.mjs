@@ -1,15 +1,17 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import { terser } from 'rollup-plugin-terser';
+import json from '@rollup/plugin-json';
 
 export default [
   // Main translation script
   {
     input: 'src/translate-content.mjs',
     output: {
-      file: 'dist/translate-content.mjs',
+      dir: 'dist',
       format: 'es',
-      sourcemap: true
+      sourcemap: true,
+      preserveModules: true,
+      preserveModulesRoot: 'src'
     },
     external: [
       'chalk',
@@ -24,14 +26,14 @@ export default [
     plugins: [
       nodeResolve(),
       commonjs(),
-      terser()
+      json()
     ]
   },
   // Binary script
   {
     input: 'bin/translate.mjs',
     output: {
-      file: 'dist/bin/translate.mjs',
+      dir: 'dist/bin',
       format: 'es',
       sourcemap: true,
       banner: '#!/usr/bin/env node'
@@ -45,7 +47,7 @@ export default [
     plugins: [
       nodeResolve(),
       commonjs(),
-      terser()
+      json()
     ]
   }
 ]; 

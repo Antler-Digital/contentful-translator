@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import pkg from 'contentful-management';
+import { createClient } from 'contentful-management';
 import * as deepl from 'deepl-node';
 import dotenv from 'dotenv';
 import fs from 'fs';
@@ -38,11 +38,7 @@ try {
 }
 
 import { SUPPORTED_LOCALES } from './translation/constants.mjs';
-import { printContentTree } from './translation/contentTree.mjs';
 import { processEntry } from './translation/processEntry.mjs';
-import { resolveLinkEntry } from './translation/utils.mjs';
-
-const { createClient } = pkg;
 
 dotenv.config({ path: '.env.development' });
 

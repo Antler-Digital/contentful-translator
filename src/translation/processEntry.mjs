@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import inquirer from 'inquirer';
-import { MAX_DEPTH, MAX_FIELDS, SKIP_FIELDS } from './constants.mjs';
+import { MAX_DEPTH, MAX_FIELDS } from './constants.mjs';
 import { printContentTree } from './contentTree.mjs';
 import { getTranslatableFields } from './processFields.mjs';
 import { translateAndReconstruct } from './richText.mjs';
