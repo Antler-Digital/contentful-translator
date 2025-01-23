@@ -20,11 +20,11 @@
         "version:patch": "npm version patch -m \"chore(release): bump version to %s\"",
         "version:minor": "npm version minor -m \"chore(release): bump version to %s\"",
         "version:major": "npm version major -m \"chore(release): bump version to %s\"",
-        "commit": "git-cz"
+        "commit": "cz"
     },
     "config": {
         "commitizen": {
-            "path": "@commitlint/cz-commitlint"
+            "path": "cz-conventional-changelog"
         }
     },
     "keywords": [
@@ -47,15 +47,15 @@
     "devDependencies": {
         "@commitlint/cli": "^18.4.3",
         "@commitlint/config-conventional": "^18.4.3",
-        "@commitlint/cz-commitlint": "^18.4.3",
+        "commitizen": "^4.3.0",
+        "cz-conventional-changelog": "^3.3.0",
+        "husky": "^8.0.3",
+        "rimraf": "^5.0.5",
+        "rollup": "^4.0.0",
         "@rollup/plugin-commonjs": "^25.0.0",
         "@rollup/plugin-json": "^6.0.0",
         "@rollup/plugin-node-resolve": "^15.0.0",
-        "@rollup/plugin-terser": "^0.4.4",
-        "commitizen": "^4.3.0",
-        "husky": "^8.0.3",
-        "rimraf": "^5.0.5",
-        "rollup": "^4.0.0"
+        "@rollup/plugin-terser": "^0.4.4"
     },
     "engines": {
         "node": ">=18"

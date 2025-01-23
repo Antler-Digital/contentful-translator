@@ -56,18 +56,6 @@
     "@commitlint/types" "^19.5.0"
     ajv "^8.11.0"
 
-"@commitlint/cz-commitlint@^18.4.3":
-  version "18.6.1"
-  resolved "https://registry.yarnpkg.com/@commitlint/cz-commitlint/-/cz-commitlint-18.6.1.tgz#b566be129306107d92d33b76da405513487464eb"
-  integrity sha512-ctU/Nti6GMr1p7jWDwN6wveFg73ma1EagcQHz0bL0kd4MWA+7FG1cs5pZX5Bql1YTEqDy3YS6ou8EclUVCfzIg==
-  dependencies:
-    "@commitlint/ensure" "^18.6.1"
-    "@commitlint/load" "^18.6.1"
-    "@commitlint/types" "^18.6.1"
-    chalk "^4.1.0"
-    lodash.isplainobject "^4.0.6"
-    word-wrap "^1.2.5"
-
 "@commitlint/ensure@^18.6.1":
   version "18.6.1"
   resolved "https://registry.yarnpkg.com/@commitlint/ensure/-/ensure-18.6.1.tgz#17141e083200ca94d8480dc23b0e8f8b1fd37b7f"
@@ -898,7 +886,7 @@ cross-spawn@^7.0.0, cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-cz-conventional-changelog@3.3.0:
+cz-conventional-changelog@3.3.0, cz-conventional-changelog@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/cz-conventional-changelog/-/cz-conventional-changelog-3.3.0.tgz#9246947c90404149b3fe2cf7ee91acad3b7d22d2"
   integrity sha512-U466fIzU5U22eES5lTNiNbZ+d8dfcHcssH4o7QsdWaCcRs/feIPCxKYSWkYBNs5mny7MvEfwpTLWjvbm94hecw==
@@ -2591,7 +2579,7 @@ which@^2.0.1:
   dependencies:
     isexe "^2.0.0"
 
-word-wrap@^1.0.3, word-wrap@^1.2.5:
+word-wrap@^1.0.3:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.5.tgz#d2c45c6dd4fbce621a66f136cbe328afd0410b34"
   integrity sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==
