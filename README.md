@@ -168,3 +168,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 MIT © [Antler Digital]
+
+## Antler Digital
+
+Antler Digital is a bespoke software development consultancy specialising in using technology to solve complex problems and build revenue generating products for clients. We work with startups and SMEs to provide handle the tech letting them focus on the rest of their business.
+
+[Learn more](https://antler.digital?r=gh)
