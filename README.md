@@ -11,7 +11,9 @@ Automate content translation in Contentful using DeepL's translation API. This t
 -   🛡️ Draft mode for safe content updates
 -   ⚙️ Configurable field exclusions and locale settings
 
-## Installation
+## Usage
+
+You can run this tool directly using npx once installed
 
 ```bash
 # For Gatsby or any other project
@@ -20,7 +22,23 @@ npm install --save-dev contentful-translator
 yarn add -D contentful-translator
 ```
 
-The `yarn translate` or `npm run translate` command will be automatically available after installation. Since this is a development tool for managing translations, it should be installed as a dev dependency as shown above.
+```bash
+
+npx contentful-translator
+
+
+```
+
+When run, the tool will:
+
+1. Connect to your Contentful space
+2. Load entries of your specified content type
+3. Present an interactive menu to:
+    - Select which entries to translate
+    - Choose target languages
+    - Preview translations
+4. Save all translations as drafts in Contentful for review
+5. Generate logs for any failed translations (if enabled)
 
 ## Prerequisites
 
@@ -67,27 +85,6 @@ DEEPL_API_KEY=your_deepl_api_key
     }
 }
 ```
-
-## Usage
-
-The translate command is automatically available after installation. Simply run:
-
-```bash
-yarn translate
-# or
-npm run translate
-```
-
-The tool will:
-
-1. Connect to your Contentful space
-2. Load entries of your specified content type
-3. Present an interactive menu to:
-    - Select which entries to translate
-    - Choose target languages
-    - Preview translations
-4. Save all translations as drafts in Contentful for review
-5. Generate logs for any failed translations (if enabled)
 
 ## Configuration Options
 
